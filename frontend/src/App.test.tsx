@@ -63,7 +63,9 @@ describe('Easy Read Adapter', () => {
     ).toHaveLength(2)
     expect(screen.getAllByText('bastante fácil')).toHaveLength(2)
     expect(screen.getByText(/Propiedad: Gobierno de Aragón/)).toBeInTheDocument()
-    expect(screen.getByText('Opciones de lectura')).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: 'Opciones de lectura' }))
+    expect(screen.getByRole('dialog', { name: 'Opciones de lectura' })).toBeInTheDocument()
+    expect(screen.getByLabelText('Tipo de letra')).toHaveValue('atkinson')
   })
 
   it('explains when neither text nor a file has been selected', async () => {

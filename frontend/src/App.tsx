@@ -12,6 +12,7 @@ import {
   Trash2,
   Upload,
   Volume2,
+  X,
 } from 'lucide-react'
 import { useEffect, useState, type FormEvent } from 'react'
 
@@ -52,6 +53,9 @@ function ReadabilityBadge({
       <span className="mt-2 inline-flex rounded-full bg-white/80 px-3 py-1 text-sm font-bold text-moss">
         {result.label}
       </span>
+      <div className="score-meter" aria-label={`Puntuación ${result.score} de 100`}>
+        <span style={{ width: `${Math.max(0, Math.min(100, result.score))}%` }} />
+      </div>
     </div>
   )
 }
@@ -77,6 +81,7 @@ export default function App() {
   const [fontSize, setFontSize] = useState(22)
   const [lineSpacing, setLineSpacing] = useState(1.7)
   const [letterSpacing, setLetterSpacing] = useState(0.2)
+  const [settingsOpen, setSettingsOpen] = useState(false)
 
   useEffect(() => {
     if (page !== 'history') return
@@ -364,57 +369,9 @@ export default function App() {
                     />
                   </div>
 
-                  <details className="reading-settings mt-5">
-                    <summary>
-                      <Settings2 size={17} aria-hidden="true" />
-                      Opciones de lectura
-                    </summary>
-                    <div className="grid gap-4 pt-4 sm:grid-cols-2">
-                      <label className="setting-control">
-                        <span>Tipo de letra</span>
-                        <select
-                          className="select-field"
-                          onChange={(event) => setFont(event.target.value as ReadingFont)}
-                          value={font}
-                        >
-                          <option value="atkinson">Atkinson Hyperlegible</option>
-                          <option value="system">Sistema</option>
-                        </select>
-                      </label>
-                      <label className="setting-control">
-                        <span>Tamaño: {fontSize} px</span>
-                        <input
-                          max="32"
-                          min="18"
-                          onChange={(event) => setFontSize(Number(event.target.value))}
-                          type="range"
-                          value={fontSize}
-                        />
-                      </label>
-                      <label className="setting-control">
-                        <span>Espacio entre líneas: {lineSpacing.toFixed(1)}</span>
-                        <input
-                          max="2.1"
-                          min="1.3"
-                          onChange={(event) => setLineSpacing(Number(event.target.value))}
-                          step="0.1"
-                          type="range"
-                          value={lineSpacing}
-                        />
-                      </label>
-                      <label className="setting-control">
-                        <span>Espacio entre letras: {letterSpacing.toFixed(1)} px</span>
-                        <input
-                          max="1.2"
-                          min="0"
-                          onChange={(event) => setLetterSpacing(Number(event.target.value))}
-                          step="0.1"
-                          type="range"
-                          value={letterSpacing}
-                        />
-                      </label>
-                    </div>
-                  </details>
+                  <button className="settings-trigger mt-5" onClick={() => setSettingsOpen(true)} type="button">
+                    <Settings2 size={17} aria-hidden="true" />Opciones de lectura
+                  </button>
 
                   <div className="mt-6 space-y-3" id="adaptation-result">
                     {result.sentences.map((sentence, index) => (
@@ -570,6 +527,18 @@ export default function App() {
           <span>Los pictogramas de ARASAAC son para uso no comercial.</span>
         </footer>
       </main>
+      {settingsOpen && (
+        <div className="settings-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) setSettingsOpen(false) }}>
+          <aside className="settings-drawer" role="dialog" aria-modal="true" aria-labelledby="reading-options-title">
+            <div className="section-heading"><div><p className="eyebrow">Lectura a medida</p><h2 id="reading-options-title">Opciones de lectura</h2></div><button className="icon-button" aria-label="Cerrar opciones" onClick={() => setSettingsOpen(false)} type="button"><X size={18} /></button></div>
+            <label className="setting-control"><span>Tipo de letra</span><select className="select-field" onChange={(event) => setFont(event.target.value as ReadingFont)} value={font}><option value="atkinson">Atkinson Hyperlegible</option><option value="system">Sistema</option></select></label>
+            <label className="setting-control"><span>Tamaño: {fontSize} px</span><input max="32" min="18" onChange={(event) => setFontSize(Number(event.target.value))} type="range" value={fontSize} /></label>
+            <label className="setting-control"><span>Espacio entre líneas: {lineSpacing.toFixed(1)}</span><input max="2.1" min="1.3" onChange={(event) => setLineSpacing(Number(event.target.value))} step="0.1" type="range" value={lineSpacing} /></label>
+            <label className="setting-control"><span>Espacio entre letras: {letterSpacing.toFixed(1)} px</span><input max="1.2" min="0" onChange={(event) => setLetterSpacing(Number(event.target.value))} step="0.1" type="range" value={letterSpacing} /></label>
+            <button className="primary-button mt-5 w-full" onClick={() => setSettingsOpen(false)} type="button">Listo</button>
+          </aside>
+        </div>
+      )}
     </div>
   )
 }
