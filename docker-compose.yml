@@ -7,6 +7,8 @@ services:
       API_KEY: ${API_KEY:-}
       DATABASE_PATH: /data/easy_read.db
       DEBUG: ${DEBUG:-false}
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-http://localhost:8000}
+      PICTOGRAM_PROVIDERS: ${PICTOGRAM_PROVIDERS:-own,mulberry,openmoji}
     volumes:
       - ./data:/data
     ports:

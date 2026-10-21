@@ -13,12 +13,12 @@ Easy Read Adapter ayuda a los equipos educativos a preparar textos en español p
 - Usa OpenAI si hay una clave configurada. Las reglas locales funcionan sin esa clave y sin conexión.
 - Elige Lectura Fácil o una adaptación más sencilla.
 - Compara las puntuaciones INFLESZ del texto original y del adaptado.
-- Busca hasta tres pictogramas de ARASAAC por frase.
+- Busca hasta tres pictogramas por frase mediante la cadena configurable `own,mulberry,openmoji`.
 - Cambia la fuente, el tamaño del texto, el espacio entre líneas y entre letras.
 - Guarda y abre el historial de adaptaciones.
 - Imprime una copia limpia o usa la opción PDF del navegador.
 
-Los pictogramas de ARASAAC tienen licencia CC BY-NC-SA y son para uso no comercial. La API y la interfaz muestran esta atribución:
+Los pictogramas propios son propietarios. Mulberry Symbols y OpenMoji usan CC BY-SA 4.0 y permiten uso comercial. ARASAAC es opcional, usa CC BY-NC-SA 4.0 y solo permite uso no comercial. Configura `PICTOGRAM_PROVIDERS` para elegir el orden. La API y la interfaz muestran solo las atribuciones de las fuentes usadas.
 
 > Pictogramas: Sergio Palao. Origen: ARASAAC (http://www.arasaac.org). Licencia: CC (BY-NC-SA). Propiedad: Gobierno de Aragón (España)
 
@@ -90,6 +90,8 @@ docker compose up --build
 | `VITE_API_KEY` | Valor incluido en la build del frontend. Si usas `API_KEY`, debe tener el mismo valor. |
 | `DATABASE_PATH` | Ruta del archivo SQLite. El valor inicial es `./data/easy_read.db`. |
 | `DEBUG` | Activa la configuración de depuración. El valor inicial es `false`. |
+| `PUBLIC_BASE_URL` | URL base absoluta para servir los pictogramas locales. |
+| `PICTOGRAM_PROVIDERS` | Proveedores separados por comas. El valor inicial es `own,mulberry,openmoji`. |
 
 El navegador recibe `VITE_API_KEY` dentro de su bundle. Úsala solo en despliegues privados con usuarios de confianza.
 
@@ -124,7 +126,7 @@ npm run build
 
 ## Privacidad
 
-Las reglas locales no envían texto a servicios externos. El texto se envía a OpenAI solo si se configura `OPENAI_API_KEY`. Si se activan los pictogramas, las búsquedas envían algunas palabras a ARASAAC. Las adaptaciones se guardan en el archivo SQLite configurado.
+Las reglas locales no envían texto a servicios externos. El texto se envía a OpenAI solo si se configura `OPENAI_API_KEY`. La cadena predeterminada usa catálogos locales y URLs remotas de imágenes sin búsquedas. Las búsquedas en ARASAAC solo ocurren si se añade de forma explícita a `PICTOGRAM_PROVIDERS`. Las adaptaciones se guardan en el archivo SQLite configurado.
 
 ## Compatibilidad
 

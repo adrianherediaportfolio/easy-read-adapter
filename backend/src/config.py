@@ -8,6 +8,8 @@ class Settings(BaseSettings):
     api_key: str = ""
     database_path: str = "./data/easy_read.db"
     debug: bool = False
+    public_base_url: str = "http://localhost:8000"
+    pictogram_providers: str = "own,mulberry,openmoji"
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 

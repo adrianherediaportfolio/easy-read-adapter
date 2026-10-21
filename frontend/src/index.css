@@ -40,7 +40,7 @@ h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 600; }
 .primary-button, .secondary-button, .icon-button { @apply inline-flex min-h-10 items-center justify-center gap-2 rounded-xl font-bold transition-colors; }
 .primary-button { @apply bg-forest px-4 py-2.5 text-sm text-white shadow-sm hover:bg-[#3F6A52] disabled:cursor-wait disabled:opacity-60; }
 .secondary-button, .icon-button { @apply border border-border bg-white px-3 py-2 text-xs text-forest hover:bg-cream; }
-.icon-button { @apply h-10 w-10 p-0; }
+.icon-button { @apply h-auto min-h-10 min-w-10 w-auto whitespace-nowrap px-3; }
 .score-card { @apply rounded-2xl p-4; }
 .score-card-before { background: #DCEBF5; }
 .score-card-after { background: #DDF0E4; }

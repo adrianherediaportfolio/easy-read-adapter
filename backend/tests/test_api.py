@@ -41,6 +41,7 @@ def test_create_list_get_and_delete_follow_the_api_contract(api_client: TestClie
         "sentences",
         "readability",
         "engine",
+        "attributions",
         "attribution",
     }
     assert adaptation["source"] == "learning-support-hub"
@@ -50,7 +51,8 @@ def test_create_list_get_and_delete_follow_the_api_contract(api_client: TestClie
     ]
     assert adaptation["readability"]["original"]["label"]
     assert adaptation["readability"]["adapted"]["score"] >= 0
-    assert "ARASAAC" in adaptation["attribution"]
+    assert adaptation["attributions"] == []
+    assert adaptation["attribution"] == ""
 
     summaries = api_client.get("/api/adaptations").json()
     assert summaries == [
@@ -67,7 +69,19 @@ def test_create_list_get_and_delete_follow_the_api_contract(api_client: TestClie
 
 
 def test_health_is_public_and_reports_openai_status(api_client: TestClient) -> None:
-    assert api_client.get("/api/health").json() == {"status": "ok", "ai_enabled": False}
+    assert api_client.get("/api/health").json() == {
+        "status": "ok",
+        "ai_enabled": False,
+        "pictogram_providers": ["own", "mulberry", "openmoji"],
+    }
+
+
+def test_local_pictogram_asset_is_served_as_svg(api_client: TestClient) -> None:
+    response = api_client.get("/pictograms/own/libro.svg")
+
+    assert response.status_code == 200
+    assert response.headers["content-type"].startswith("image/svg+xml")
+    assert '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"' in response.text
 
 
 def test_api_key_is_optional_but_protects_adaptation_routes(

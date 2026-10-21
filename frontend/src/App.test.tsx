@@ -25,8 +25,11 @@ const adaptation = {
       pictograms: [
         {
           keyword: 'grupo',
-          arasaac_id: 42,
+          source: 'arasaac' as const,
+          id: '42',
           image_url: 'https://static.arasaac.org/pictograms/42/42_300.png',
+          license: 'CC BY-NC-SA 4.0' as const,
+          commercial_use: false,
         },
       ],
     },
@@ -36,6 +39,9 @@ const adaptation = {
     adapted: { score: 78.2, label: 'bastante fácil' },
   },
   engine: 'rules' as const,
+  attributions: [
+    'Pictogramas: Sergio Palao. Origen: ARASAAC (http://www.arasaac.org). Licencia: CC (BY-NC-SA). Propiedad: Gobierno de Aragón (España)',
+  ],
   attribution:
     'Pictogramas: Sergio Palao. Origen: ARASAAC (http://www.arasaac.org). Licencia: CC (BY-NC-SA). Propiedad: Gobierno de Aragón (España)',
 }

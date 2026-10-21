@@ -19,7 +19,7 @@ from src.models import (
     ReadabilityScore,
 )
 from src.services.adaptation import adapt_text
-from src.services.pictograms import ATTRIBUTION, pictograms_for_sentences
+from src.services.pictograms import pictograms_with_attributions, provider_names
 from src.services.readability import calculate_readability
 
 router = APIRouter(prefix="/api", tags=["adaptations"])
@@ -35,7 +35,7 @@ async def _create_adaptation(
 ) -> AdaptationResponse:
     adapted_text, engine = await adapt_text(text, level)
     sentence_texts = [line.strip() for line in adapted_text.splitlines() if line.strip()]
-    pictogram_groups = await pictograms_for_sentences(sentence_texts, pictograms)
+    pictogram_groups, attributions = await pictograms_with_attributions(sentence_texts, pictograms)
     sentences = [
         AdaptedSentence(
             text=sentence,
@@ -56,7 +56,8 @@ async def _create_adaptation(
             adapted=ReadabilityScore(**calculate_readability(adapted_text)),
         ),
         engine=engine,
-        attribution=ATTRIBUTION,
+        attributions=attributions,
+        attribution=" · ".join(attributions),
     )
     save_adaptation(response.model_dump(mode="json"))
     return response
@@ -135,6 +136,22 @@ async def get_adaptation_by_id(adaptation_id: str) -> dict:
     adaptation = get_adaptation(adaptation_id)
     if adaptation is None:
         raise HTTPException(status_code=404, detail="No se encontró la adaptación.")
+    adaptation.setdefault("attributions", [])
+    for sentence in adaptation.get("sentences", []):
+        for pictogram in sentence.get("pictograms", []):
+            if "source" in pictogram:
+                continue
+            legacy_id = pictogram.pop("arasaac_id", None)
+            if legacy_id is None:
+                continue
+            pictogram.update(
+                {
+                    "source": "arasaac",
+                    "id": str(legacy_id),
+                    "license": "CC BY-NC-SA 4.0",
+                    "commercial_use": False,
+                }
+            )
     return adaptation
 
 
@@ -146,5 +163,9 @@ async def remove_adaptation(adaptation_id: str) -> None:
 
 
 @router.get("/health")
-async def health() -> dict[str, bool | str]:
-    return {"status": "ok", "ai_enabled": bool(settings.openai_api_key.strip())}
+async def health() -> dict[str, bool | str | list[str]]:
+    return {
+        "status": "ok",
+        "ai_enabled": bool(settings.openai_api_key.strip()),
+        "pictogram_providers": provider_names(),
+    }

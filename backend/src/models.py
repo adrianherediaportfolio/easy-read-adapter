@@ -21,8 +21,11 @@ class AdaptationRequest(BaseModel):
 
 class Pictogram(BaseModel):
     keyword: str
-    arasaac_id: int
+    source: Literal["own", "mulberry", "openmoji", "arasaac"]
+    id: str
     image_url: str
+    license: Literal["proprietary", "CC BY-SA 4.0", "CC BY-NC-SA 4.0"]
+    commercial_use: bool
 
 
 class AdaptedSentence(BaseModel):
@@ -50,6 +53,7 @@ class AdaptationResponse(BaseModel):
     sentences: list[AdaptedSentence]
     readability: ReadabilityResult
     engine: Literal["openai", "rules"]
+    attributions: list[str]
     attribution: str
 
 

@@ -1,0 +1,480 @@
+[
+  {
+    "id": "nino",
+    "file": "nino.svg",
+    "keywords": [
+      "niño",
+      "nino",
+      "chico",
+      "alumno"
+    ]
+  },
+  {
+    "id": "nina",
+    "file": "nina.svg",
+    "keywords": [
+      "niña",
+      "nina",
+      "chica",
+      "alumna"
+    ]
+  },
+  {
+    "id": "profesor",
+    "file": "profesor.svg",
+    "keywords": [
+      "profesor",
+      "maestro",
+      "docente"
+    ]
+  },
+  {
+    "id": "profesora",
+    "file": "profesora.svg",
+    "keywords": [
+      "profesora",
+      "maestra",
+      "docente"
+    ]
+  },
+  {
+    "id": "familia",
+    "file": "familia.svg",
+    "keywords": [
+      "familia",
+      "familiares"
+    ]
+  },
+  {
+    "id": "colegio",
+    "file": "colegio.svg",
+    "keywords": [
+      "colegio",
+      "escuela",
+      "colegios",
+      "escuelas"
+    ]
+  },
+  {
+    "id": "clase",
+    "file": "clase.svg",
+    "keywords": [
+      "clase",
+      "aula",
+      "salón"
+    ]
+  },
+  {
+    "id": "libro",
+    "file": "libro.svg",
+    "keywords": [
+      "libro",
+      "libros",
+      "lectura"
+    ]
+  },
+  {
+    "id": "leer",
+    "file": "leer.svg",
+    "keywords": [
+      "leer",
+      "leyendo",
+      "lectora",
+      "lector"
+    ]
+  },
+  {
+    "id": "escribir",
+    "file": "escribir.svg",
+    "keywords": [
+      "escribir",
+      "escribe",
+      "escribiendo"
+    ]
+  },
+  {
+    "id": "lapiz",
+    "file": "lapiz.svg",
+    "keywords": [
+      "lápiz",
+      "lapiz",
+      "lápices"
+    ]
+  },
+  {
+    "id": "cuaderno",
+    "file": "cuaderno.svg",
+    "keywords": [
+      "cuaderno",
+      "cuadernos",
+      "libreta"
+    ]
+  },
+  {
+    "id": "mochila",
+    "file": "mochila.svg",
+    "keywords": [
+      "mochila",
+      "mochilas",
+      "bolsa escolar"
+    ]
+  },
+  {
+    "id": "mesa",
+    "file": "mesa.svg",
+    "keywords": [
+      "mesa",
+      "mesas"
+    ]
+  },
+  {
+    "id": "silla",
+    "file": "silla.svg",
+    "keywords": [
+      "silla",
+      "sillas"
+    ]
+  },
+  {
+    "id": "pizarra",
+    "file": "pizarra.svg",
+    "keywords": [
+      "pizarra",
+      "pizarras",
+      "encerado"
+    ]
+  },
+  {
+    "id": "ordenador",
+    "file": "ordenador.svg",
+    "keywords": [
+      "ordenador",
+      "computadora",
+      "computador",
+      "pantalla"
+    ]
+  },
+  {
+    "id": "comer",
+    "file": "comer.svg",
+    "keywords": [
+      "comer",
+      "come",
+      "comiendo"
+    ]
+  },
+  {
+    "id": "beber",
+    "file": "beber.svg",
+    "keywords": [
+      "beber",
+      "bebe",
+      "bebiendo"
+    ]
+  },
+  {
+    "id": "agua",
+    "file": "agua.svg",
+    "keywords": [
+      "agua",
+      "aguas",
+      "gota"
+    ]
+  },
+  {
+    "id": "dormir",
+    "file": "dormir.svg",
+    "keywords": [
+      "dormir",
+      "duerme",
+      "durmiendo",
+      "sueño"
+    ]
+  },
+  {
+    "id": "casa",
+    "file": "casa.svg",
+    "keywords": [
+      "casa",
+      "casas",
+      "hogar"
+    ]
+  },
+  {
+    "id": "jugar",
+    "file": "jugar.svg",
+    "keywords": [
+      "jugar",
+      "juega",
+      "jugando",
+      "juego"
+    ]
+  },
+  {
+    "id": "parque",
+    "file": "parque.svg",
+    "keywords": [
+      "parque",
+      "jardín",
+      "jardin"
+    ]
+  },
+  {
+    "id": "patio",
+    "file": "patio.svg",
+    "keywords": [
+      "patio",
+      "patios",
+      "exterior"
+    ]
+  },
+  {
+    "id": "recreo",
+    "file": "recreo.svg",
+    "keywords": [
+      "recreo",
+      "descanso",
+      "juego"
+    ]
+  },
+  {
+    "id": "musica",
+    "file": "musica.svg",
+    "keywords": [
+      "música",
+      "musica",
+      "canción",
+      "cancion"
+    ]
+  },
+  {
+    "id": "pintar",
+    "file": "pintar.svg",
+    "keywords": [
+      "pintar",
+      "pinta",
+      "pintando",
+      "pintura"
+    ]
+  },
+  {
+    "id": "contar",
+    "file": "contar.svg",
+    "keywords": [
+      "contar",
+      "cuenta",
+      "contando"
+    ]
+  },
+  {
+    "id": "numeros",
+    "file": "numeros.svg",
+    "keywords": [
+      "números",
+      "numeros",
+      "número",
+      "numero"
+    ]
+  },
+  {
+    "id": "letras",
+    "file": "letras.svg",
+    "keywords": [
+      "letras",
+      "letra",
+      "abecedario"
+    ]
+  },
+  {
+    "id": "palabra",
+    "file": "palabra.svg",
+    "keywords": [
+      "palabra",
+      "palabras",
+      "frase"
+    ]
+  },
+  {
+    "id": "pregunta",
+    "file": "pregunta.svg",
+    "keywords": [
+      "pregunta",
+      "preguntar",
+      "preguntas"
+    ]
+  },
+  {
+    "id": "escuchar",
+    "file": "escuchar.svg",
+    "keywords": [
+      "escuchar",
+      "escucha",
+      "oyendo"
+    ]
+  },
+  {
+    "id": "hablar",
+    "file": "hablar.svg",
+    "keywords": [
+      "hablar",
+      "habla",
+      "hablando",
+      "decir"
+    ]
+  },
+  {
+    "id": "mirar",
+    "file": "mirar.svg",
+    "keywords": [
+      "mirar",
+      "mira",
+      "mirando",
+      "ver"
+    ]
+  },
+  {
+    "id": "pensar",
+    "file": "pensar.svg",
+    "keywords": [
+      "pensar",
+      "piensa",
+      "pensando"
+    ]
+  },
+  {
+    "id": "ayudar",
+    "file": "ayudar.svg",
+    "keywords": [
+      "ayudar",
+      "ayuda",
+      "ayudando",
+      "apoyar"
+    ]
+  },
+  {
+    "id": "esperar",
+    "file": "esperar.svg",
+    "keywords": [
+      "esperar",
+      "espera",
+      "esperando"
+    ]
+  },
+  {
+    "id": "terminar",
+    "file": "terminar.svg",
+    "keywords": [
+      "terminar",
+      "termina",
+      "terminado",
+      "acabar"
+    ]
+  },
+  {
+    "id": "empezar",
+    "file": "empezar.svg",
+    "keywords": [
+      "empezar",
+      "empieza",
+      "comenzar",
+      "inicio"
+    ]
+  },
+  {
+    "id": "si",
+    "file": "si.svg",
+    "keywords": [
+      "sí",
+      "si",
+      "afirmar",
+      "correcto"
+    ]
+  },
+  {
+    "id": "no",
+    "file": "no.svg",
+    "keywords": [
+      "no",
+      "negación",
+      "negacion"
+    ]
+  },
+  {
+    "id": "contento",
+    "file": "contento.svg",
+    "keywords": [
+      "contento",
+      "contenta",
+      "alegre",
+      "feliz"
+    ]
+  },
+  {
+    "id": "triste",
+    "file": "triste.svg",
+    "keywords": [
+      "triste",
+      "tristeza"
+    ]
+  },
+  {
+    "id": "enfadado",
+    "file": "enfadado.svg",
+    "keywords": [
+      "enfadado",
+      "enfadada",
+      "enfado",
+      "molesto"
+    ]
+  },
+  {
+    "id": "cansado",
+    "file": "cansado.svg",
+    "keywords": [
+      "cansado",
+      "cansada",
+      "cansancio",
+      "agotado"
+    ]
+  },
+  {
+    "id": "bano",
+    "file": "bano.svg",
+    "keywords": [
+      "baño",
+      "bano",
+      "aseo",
+      "inodoro"
+    ]
+  },
+  {
+    "id": "lavarse-las-manos",
+    "file": "lavarse-las-manos.svg",
+    "keywords": [
+      "lavarse las manos",
+      "lavarse",
+      "lavar",
+      "manos",
+      "lavado"
+    ]
+  },
+  {
+    "id": "autobus",
+    "file": "autobus.svg",
+    "keywords": [
+      "autobús",
+      "autobus",
+      "bus",
+      "autobuses"
+    ]
+  },
+  {
+    "id": "sol",
+    "file": "sol.svg",
+    "keywords": [
+      "sol",
+      "soleado",
+      "soles"
+    ]
+  }
+]

@@ -2,8 +2,11 @@ export type AdaptationLevel = 'lectura_facil' | 'simplificado'
 
 export interface Pictogram {
   keyword: string
-  arasaac_id: number
+  source: 'own' | 'mulberry' | 'openmoji' | 'arasaac'
+  id: string
   image_url: string
+  license: 'proprietary' | 'CC BY-SA 4.0' | 'CC BY-NC-SA 4.0'
+  commercial_use: boolean
 }
 
 export interface AdaptedSentence {
@@ -29,6 +32,7 @@ export interface Adaptation {
     adapted: ReadabilityScore
   }
   engine: 'openai' | 'rules'
+  attributions: string[]
   attribution: string
 }
 

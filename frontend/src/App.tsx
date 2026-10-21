@@ -28,9 +28,6 @@ import type { Adaptation, AdaptationLevel, AdaptationSummary } from './types'
 type Page = 'new' | 'history'
 type ReadingFont = 'system' | 'atkinson'
 
-const ATTRIBUTION =
-  'Pictogramas: Sergio Palao. Origen: ARASAAC (http://www.arasaac.org). Licencia: CC (BY-NC-SA). Propiedad: Gobierno de Aragón (España)'
-
 function ReadabilityBadge({
   title,
   result,
@@ -302,7 +299,7 @@ export default function App() {
                 <label className="toggle-row">
                   <span>
                     <span className="block font-bold">Añadir pictogramas</span>
-                    <span className="block text-xs text-slate-500">Busca apoyos visuales en ARASAAC</span>
+                    <span className="block text-xs text-slate-500">Combina pictogramas propios y de fuentes abiertas</span>
                   </span>
                   <input
                     checked={withPictograms}
@@ -381,7 +378,7 @@ export default function App() {
                             {sentence.pictograms.map((pictogram) => (
                               <figure
                                 className="m-0 grid justify-items-center gap-1"
-                                key={`${pictogram.arasaac_id}-${pictogram.keyword}`}
+                                key={`${pictogram.source}-${pictogram.id}-${pictogram.keyword}`}
                               >
                                 <img
                                   alt={`Pictograma: ${pictogram.keyword}`}
@@ -413,10 +410,13 @@ export default function App() {
                     ))}
                   </div>
 
-                  {withPictograms && (
-                    <p className="attribution mt-5">
-                      {result.attribution || ATTRIBUTION}
-                    </p>
+                  {result.attributions.length > 0 && (
+                    <div className="attribution mt-5">
+                      <p className="font-bold">Fuentes de los pictogramas</p>
+                      <ul className="mt-1 list-disc space-y-1 pl-5">
+                        {result.attributions.map((item) => <li key={item}>{item}</li>)}
+                      </ul>
+                    </div>
                   )}
                   <div className="mt-5 flex items-center gap-2 rounded-xl bg-[#f1f4ef] px-4 py-3 text-xs text-slate-600">
                     <Volume2 size={16} className="shrink-0 text-moss" aria-hidden="true" />
@@ -524,7 +524,7 @@ export default function App() {
 
         <footer className="mt-9 flex flex-col justify-between gap-2 border-t border-[#dfe4d9] pt-5 text-xs text-slate-500 sm:flex-row">
           <span>Una herramienta de apoyo para la práctica pedagógica.</span>
-          <span>Los pictogramas de ARASAAC son para uso no comercial.</span>
+          <span>Las fuentes y licencias aparecen junto a cada adaptación.</span>
         </footer>
       </main>
       {settingsOpen && (

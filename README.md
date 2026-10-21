@@ -13,12 +13,12 @@ Easy Read Adapter helps educators prepare Spanish texts for students with dyslex
 - Use OpenAI when a key is configured. Local rules work without that key or a network connection.
 - Select Lectura Fácil or a simpler adaptation.
 - Review original and adapted INFLESZ scores.
-- Find up to three ARASAAC pictograms for each sentence.
+- Find up to three pictograms per sentence through the configurable `own,mulberry,openmoji` chain.
 - Adjust font, text size, line spacing, and letter spacing.
 - Save and reopen a history of adaptations.
 - Print a clean copy or use the browser's PDF option.
 
-ARASAAC pictograms are licensed CC BY-NC-SA and are for non-commercial use. The API and interface show this attribution:
+Own pictograms are proprietary. Mulberry Symbols and OpenMoji use CC BY-SA 4.0 and allow commercial use. ARASAAC is opt-in only, uses CC BY-NC-SA 4.0, and is for non-commercial use. Configure `PICTOGRAM_PROVIDERS` to choose the chain. The API and interface show only the attributions for sources used.
 
 > Pictogramas: Sergio Palao. Origen: ARASAAC (http://www.arasaac.org). Licencia: CC (BY-NC-SA). Propiedad: Gobierno de Aragón (España)
 
@@ -90,6 +90,8 @@ docker compose up --build
 | `VITE_API_KEY` | Frontend build value. Set it to the same value as `API_KEY` when using the optional key. |
 | `DATABASE_PATH` | SQLite file path. Defaults to `./data/easy_read.db`. |
 | `DEBUG` | Enables debug configuration. Defaults to `false`. |
+| `PUBLIC_BASE_URL` | Absolute base URL used for local pictogram assets. |
+| `PICTOGRAM_PROVIDERS` | Comma-separated provider order. Defaults to `own,mulberry,openmoji`. |
 
 The browser receives `VITE_API_KEY` as part of its bundle. Use it only for a private deployment where users are trusted.
 
@@ -124,7 +126,7 @@ npm run build
 
 ## Privacy
 
-The local rules do not send text to an external service. Text is sent to OpenAI only when `OPENAI_API_KEY` is configured. Pictogram searches send selected words to ARASAAC when pictograms are enabled. Saved adaptations stay in the configured SQLite database.
+The local rules do not send text to an external service. Text is sent to OpenAI only when `OPENAI_API_KEY` is configured. The default pictogram chain uses local catalogs and remote image URLs without lookup requests. ARASAAC lookup requests happen only when explicitly added to `PICTOGRAM_PROVIDERS`. Saved adaptations stay in the configured SQLite database.
 
 ## Compatibility
 
